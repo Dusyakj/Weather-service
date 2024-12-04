@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px 40px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4285F4;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Введите название города</h2>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Например, Москва" required>
+            <br>
+            <input type="submit" value="Отправить">
+        </form>
+
+        {% if result %}
+            {% if result[0] %}
+                <div class="result">
+                    <h2>{{ result[1]['Статус'] }}</h2>
+                    <p><strong>Температура:</strong> {{ result[1]['Температура'] }}°C</p>
+                    <p><strong>Влажность:</strong> {{ result[1]['Влажность'] }}%</p>
+                    <p><strong>Скорость ветра:</strong> {{ result[1]['Скорость ветра'] }}м/с</p>
+                    <p><strong>Вероятность дождя:</strong> {{ result[1]['Вероятность дождя'] }}%</p>
+                </div>
+            {% elif result[1] %}
+                <div class="error">
+                    <h2>Ошибка:</h2>
+                    <p>{{ result[1] }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

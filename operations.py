@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = 'drvtaUgPGgLfbF6ksvDAoWqq2f4xZh4h'
+API_KEY = 'imkYUoZylfEk7lcDNVfGZnzwwEfT5Rgo'
 
 def get_location_key(city_name, api_key):
     url = 'http://dataservice.accuweather.com/locations/v1/cities/search'
