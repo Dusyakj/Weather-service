@@ -14,7 +14,7 @@ def index():
             try:
                 result = main(city)
             except Exception as e:
-                result = f"Произошла ошибка: {e}"
+                result = [None, f"Произошла ошибка: {e}"]
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
