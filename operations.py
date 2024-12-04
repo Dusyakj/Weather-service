@@ -57,14 +57,23 @@ def main(city):
             wind_speed = current.get('Wind', {}).get('Speed', {}).get('Value')
             precipitation_prob = current.get('PrecipitationProbability')
 
-            return {
+            data = {
                 'Город': city,
                 'Температура': temp,
                 'Влажность': humidity,
                 'Скорость ветра': wind_speed,
                 'Вероятность дождя': precipitation_prob
             }
+            return [True, check_bad_weather(data)]
         else: return forecast
     else:
         return location_key
 
+def check_bad_weather(data):
+    if data['Температура'] > 30 or data['Температура'] < 0 \
+        or data['Вероятность дождя'] > 80 or data['Скорость ветра'] > 30:
+        data['Статус'] = 'Плохая погода'
+        return data
+    else:
+        data['Статус'] = 'Хорошая погода'
+        return data
