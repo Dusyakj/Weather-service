@@ -72,8 +72,8 @@ def main(city):
 def check_bad_weather(data):
     if data['Температура'] > 30 or data['Температура'] < 0 \
         or data['Вероятность дождя'] > 80 or data['Скорость ветра'] > 30:
-        data['Статус'] = 'Погода — супер'
+        data['Статус'] = 'Ой-ой, погода плохая'
         return data
     else:
-        data['Статус'] = 'Ой-ой, погода плохая'
+        data['Статус'] = 'Погода — супер'
         return data
