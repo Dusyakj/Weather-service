@@ -12,7 +12,6 @@ API_KEY = 'imkYUoZylfEk7lcDNVfGZnzwwEfT5Rgo'
 def get_location_key(lat, lon, api_key):
 
     response = requests.get(f"http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey={api_key}&q={lat}%2C%20{lon}")
-    print(response.json())
 
     if response.status_code == 200:
         data = response.json()
@@ -35,7 +34,6 @@ def get_hourly_forecast(location_key, api_key):
 
         try:
             response = requests.get(url, params=params)
-            print(response.json())
             response.raise_for_status()
             data = response.json()
             if data:
